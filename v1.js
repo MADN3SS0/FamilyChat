@@ -1,52 +1,49 @@
-const nomeInput = document.getElementById('nome');
-const remetenteSelect = document.getElementById('remetente');
-const mensagemInput = document.getElementById('mensagem');
-const enviarBtn = document.getElementById('enviarBtn');
-const mensagensContainer = document.getElementById('mensagensContainer');
+window.addEventListener("DOMContentLoaded", () => {
+  const nomeSalvo = localStorage.getItem("familyChatNome");
+  const historicoSalvo = JSON.parse(localStorage.getItem("familyChatHistorico")) || [];
 
-function criarMensagem(nome, remetente, texto) {
-  const div = document.createElement('div');
-  div.classList.add('mensagem');
-  if (remetente) div.classList.add('remetente');
-  div.innerText = `${nome} mandou uma mensagem para ${remetente || '...' }: ${texto}`;
-  return div;
-}
+  if (nomeSalvo) {
+    document.getElementById("nomeInput").value = nomeSalvo;
+    document.getElementById("nomeInput").disabled = true;
+  }
 
-function criarNotificacao(texto) {
-  const div = document.createElement('div');
-  div.classList.add('mensagem');
-  div.style.background = '#292828ff';
-  div.innerText = texto;
-  return div;
-}
+  historicoSalvo.forEach(msg => adicionarMensagem(msg.nome, msg.remetente, msg.texto));
+});
 
-enviarBtn.addEventListener('click', () => {
-  const nome = nomeInput.value.trim();
-  const remetente = remetenteSelect.value;
-  const texto = mensagemInput.value.trim();
+document.getElementById("enviarBtn").addEventListener("click", enviarMensagem);
+
+function enviarMensagem() {
+  const nome = document.getElementById("nomeInput").value.trim();
+  const remetente = document.getElementById("remetenteSelect").value;
+  const texto = document.getElementById("mensagemInput").value.trim();
 
   if (!nome) {
-    mensagensContainer.appendChild(criarNotificacao('Erro: Coloca o teu nome!'));
+    adicionarMensagem("Sistema", "Você", "Por favor, insira seu nome!", "erro");
     return;
   }
-
-  if (!remetente) {
-    mensagensContainer.appendChild(criarNotificacao('Erro: Escolhe um remetente!'));
-    return;
-  }
-
   if (!texto) {
-    mensagensContainer.appendChild(criarNotificacao('Erro: Escreve uma mensagem!'));
+    adicionarMensagem("Sistema", "Você", "Digite uma mensagem antes de enviar.", "erro");
     return;
   }
 
-  const msg = criarMensagem(nome, remetente, texto);
-  mensagensContainer.appendChild(msg);
-  mensagemInput.value = '';
+  adicionarMensagem(nome, remetente, texto, "sucesso");
 
-  // Scroll automático para a última mensagem
-  mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
+  let historico = JSON.parse(localStorage.getItem("familyChatHistorico")) || [];
+  historico.push({ nome, remetente, texto });
+  localStorage.setItem("familyChatHistorico", JSON.stringify(historico));
 
-  // Notificação interna
-  mensagensContainer.appendChild(criarNotificacao('Mensagem enviada com sucesso!'));
-});
+  localStorage.setItem("familyChatNome", nome);
+  document.getElementById("nomeInput").disabled = true;
+
+  document.getElementById("mensagemInput").value = "";
+}
+
+function adicionarMensagem(nome, remetente, texto, tipo = "") {
+  const container = document.getElementById("mensagensContainer");
+  const div = document.createElement("div");
+  div.classList.add("mensagem");
+  if (tipo) div.classList.add(tipo);
+  div.innerHTML = `<strong>${nome}</strong> enviou para <strong>${remetente}</strong>: ${texto}`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
