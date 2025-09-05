@@ -11,20 +11,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #eee;
   padding: 20px;
+  color: #eee;
 }
 
 .chat-container {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 h1 {
@@ -80,7 +80,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 250px;
+  max-height: 200px;
   overflow-y: auto;
   padding: 10px;
   background: #222;
@@ -89,10 +89,10 @@ button:hover {
 
 .mensagem {
   padding: 8px 10px;
-  background: #333;
   border-radius: 8px;
   word-wrap: break-word;
-  transition: background 0.3s;
+  background: #333;
+  color: #eee;
 }
 
 .mensagem.remetente {
@@ -100,11 +100,13 @@ button:hover {
 }
 
 .mensagem.sucesso {
-  background: #2a5;
+  background: #4caf50;
+  color: #fff;
 }
 
 .mensagem.erro {
-  background: #a25;
+  background: #f44336;
+  color: #fff;
 }
 
 footer {
