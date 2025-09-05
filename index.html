@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FamilyChat</title>
+  <link rel="stylesheet" href="v1.css">
+</head>
+<body>
+
+  <div class="chat-container">
+    <h1>FamilyChat</h1>
+
+    <div class="input-group">
+      <input type="text" id="nome" placeholder="Teu nome">
+      <select id="remetente">
+        <option value="">Escolher remetente...</option>
+        <option value="Pai">Pai</option>
+        <option value="Mãe">Mãe</option>
+        <option value="Filho">Filho</option>
+        <option value="Amigo">Amigo</option>
+      </select>
+    </div>
+
+    <textarea id="mensagem" placeholder="Escreve a mensagem..."></textarea>
+    <button id="enviarBtn">Enviar</button>
+
+    <div id="mensagensContainer"></div>
+
+    <footer>
+      <p>© 2025 madn3ss. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="v1.js"></script>
+</body>
+</html>
