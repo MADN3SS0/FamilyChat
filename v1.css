@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -12,20 +11,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   color: #eee;
+  padding: 20px;
 }
 
 .chat-container {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
 h1 {
@@ -81,7 +80,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
   padding: 10px;
   background: #222;
@@ -93,10 +92,19 @@ button:hover {
   background: #333;
   border-radius: 8px;
   word-wrap: break-word;
+  transition: background 0.3s;
 }
 
 .mensagem.remetente {
   background: #555;
+}
+
+.mensagem.sucesso {
+  background: #2a5;
+}
+
+.mensagem.erro {
+  background: #a25;
 }
 
 footer {
@@ -106,7 +114,6 @@ footer {
   margin-top: 10px;
 }
 
-/* Responsividade */
 @media (max-width: 480px) {
   .input-group {
     flex-direction: column;
