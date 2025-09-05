@@ -8,23 +8,43 @@
 </head>
 <body>
   <div class="chat-container">
-    <h1>FamilyChat</h1>
+    <h1>FamilyChat 🏠💬👨‍👩‍👧‍👦</h1>
 
     <div class="input-group">
-      <input type="text" id="nomeInput" placeholder="Seu nome">
-      <select id="remetenteSelect">
-        <option value="Mãe">Mãe</option>
-        <option value="Pai">Pai</option>
+      <input type="text" id="nomeUsuario" placeholder="Digite seu nome">
+      <select id="remetente">
         <option value="Filho">Filho</option>
+        <option value="Pai">Pai</option>
+        <option value="Mãe">Mãe</option>
+        <option value="Avó">Avó</option>
+        <option value="Avô">Avô</option>
+        <option value="Amigo">Amigo</option>
+      </select>
+      <select id="destino">
+        <option value="Pai">Pai</option>
+        <option value="Mãe">Mãe</option>
+        <option value="Filho">Filho</option>
+        <option value="Avó">Avó</option>
+        <option value="Avô">Avô</option>
         <option value="Amigo">Amigo</option>
       </select>
     </div>
 
-    <textarea id="mensagemInput" placeholder="Digite sua mensagem"></textarea>
-    <button id="enviarBtn">Enviar</button>
+    <textarea id="mensagem" placeholder="Digite sua mensagem..."></textarea>
+
+    <div class="botoes">
+      <button id="enviarBtn">Enviar</button>
+      <button id="limparBtn">Limpar histórico</button>
+      <button id="ocultarBtn">Ocultar histórico</button>
+      <button id="trancarBtn">Trancar informações</button>
+      <button id="mudarNomeBtn">Mudar nome</button>
+    </div>
 
     <div id="mensagensContainer"></div>
-    <footer>© 2025 madn3ss. Todos os direitos reservados.</footer>
+
+    <footer>
+      <p>© 2025 madn3ss. Todos os direitos reservados.</p>
+    </footer>
   </div>
 
   <script src="v1.js"></script>
