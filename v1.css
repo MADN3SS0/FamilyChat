@@ -6,13 +6,13 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #111, #444);
+  background: linear-gradient(135deg, #111, #333);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   color: #eee;
+  padding: 20px;
 }
 
 .chat-container {
@@ -21,7 +21,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -36,16 +36,17 @@ h1 {
 .input-group {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
-.input-group input, 
+.input-group input,
 .input-group select {
   flex: 1;
   padding: 10px;
   border-radius: 8px;
   border: none;
   background: #2a2a2a;
-  color: #eee;
+  color: #fff;
   outline: none;
 }
 
@@ -56,12 +57,19 @@ textarea {
   border: none;
   padding: 10px;
   background: #2a2a2a;
-  color: #eee;
+  color: #fff;
   resize: vertical;
   outline: none;
 }
 
-button {
+.botoes {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.botoes button {
+  flex: 1;
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -72,15 +80,24 @@ button {
   transition: background 0.3s;
 }
 
-button:hover {
+.botoes button:hover {
   background: #666;
+}
+
+#limparBtn,
+#ocultarBtn,
+#trancarBtn,
+#mudarNomeBtn {
+  flex: 0 0 auto;
+  padding: 8px;
+  font-size: 12px;
 }
 
 #mensagensContainer {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 200px;
+  max-height: 250px;
   overflow-y: auto;
   padding: 10px;
   background: #222;
@@ -91,22 +108,31 @@ button:hover {
   padding: 8px 10px;
   border-radius: 8px;
   word-wrap: break-word;
-  background: #333;
-  color: #eee;
-}
-
-.mensagem.remetente {
-  background: #555;
-}
-
-.mensagem.sucesso {
-  background: #4caf50;
   color: #fff;
 }
 
-.mensagem.erro {
-  background: #f44336;
-  color: #fff;
+.mensagem.Filho {
+  background: linear-gradient(90deg, #555, #888);
+}
+
+.mensagem.Pai {
+  background: linear-gradient(90deg, #4a90e2, #357ab8);
+}
+
+.mensagem.Mãe {
+  background: linear-gradient(90deg, #e24a8a, #b8356a);
+}
+
+.mensagem.Amigo {
+  background: linear-gradient(90deg, #f5a623, #d48806);
+}
+
+.mensagem.Avó {
+  background: linear-gradient(90deg, #8b57a0, #5f3570);
+}
+
+.mensagem.Avô {
+  background: linear-gradient(90deg, #3a3a3a, #1c1c1c);
 }
 
 footer {
@@ -114,10 +140,4 @@ footer {
   font-size: 12px;
   color: #aaa;
   margin-top: 10px;
-}
-
-@media (max-width: 480px) {
-  .input-group {
-    flex-direction: column;
-  }
 }
